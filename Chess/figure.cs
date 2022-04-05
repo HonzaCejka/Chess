@@ -6,30 +6,50 @@ namespace Chess
 {
     public class figure
     {
-        private List<string> numbers = new List<string>() { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-        private string position;
+        private List<string> numbers = new List<string>() {"1", "2", "3", "4", "5", "6", "7", "8"};
+        private List<string> letters = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
+        private string position ="";
 
-        public FigureType Type { get; set; }
-
+        public FigureType Type { get; }
         public string Position
         {
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))    //hodnota v proměnné value je null nebo ""
                 {
-
+                    position = value;
                 }
-                else if (numbers.Contains(value.Substring(1,1)))
+                else if (value.Length == 2)
                 {
-
+                    if (letters.Contains(value.Substring(0, 1).ToUpper()) && numbers.Contains(value.Substring(1,1)))  //druhý znak je v listu numbers a první znak je v listu letters
+                    {
+                        position = value;
+                    }
+                    else
+                    {
+                        throw new Exception("Figure position value has to be valid chess position!");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Figure position value has to be 2 letters valid chess position!");
                 }
             }
             get => position;     
         }
+        public FigureColor Color { get; }
 
-        public figure()
+        public figure(FigureType type, FigureColor color)
         {
-            Position = "A2";
+            Type = type;
+            Color = color;
+        }
+
+        public figure(FigureType type, string position, FigureColor color)
+        {
+            Type = type;
+            Position = position;
+            Color = color;
         }
     }
 
@@ -41,5 +61,9 @@ namespace Chess
         Bishop, //střelec
         Queen, //Dáma
         King //král
+    }
+    public enum FigureColor
+    {
+        white,black
     }
 }
