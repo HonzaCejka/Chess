@@ -35,6 +35,7 @@ namespace Chess
             figures.Add(new figure(FigureType.King, "E8", FigureColor.black));
             figures.Add(new figure(FigureType.Queen, "D8", FigureColor.black));
 
+
             figures.Add(new figure(FigureType.Pawn, "H7", FigureColor.black));
             figures.Add(new figure(FigureType.Pawn, "B7", FigureColor.black));
             figures.Add(new figure(FigureType.Pawn, "G7", FigureColor.black));
