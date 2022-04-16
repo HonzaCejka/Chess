@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="chess board with nums.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="chess board with nums.png" />
+  </ItemGroup>
+
 </Project>
