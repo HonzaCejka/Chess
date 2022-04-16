@@ -20,7 +20,7 @@ namespace Chess
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<figure> figures;
+        List<figure> figures = new List<figure>();
 
 
         public MainWindow()
