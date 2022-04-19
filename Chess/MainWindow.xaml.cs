@@ -72,7 +72,8 @@ namespace Chess
         public void DrawBoard(Canvas canvas)
         {
             Rectangle rectangle = new Rectangle();
-            rectangle.
+            rectangle.Width = canvas.Width / 8;
+            rectangle.Height = canvas.Height / 8;
         }
     }
 }

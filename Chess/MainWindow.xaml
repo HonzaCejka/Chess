@@ -23,7 +23,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="vypis" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Height="624" Width="134"/>
-        <Canvas x:Name="Can" Grid.Column="1" Grid.Row="3"/>
+        <Canvas x:Name="Canvas" Grid.Column="1" Grid.Row="3"/>
 
 
 
