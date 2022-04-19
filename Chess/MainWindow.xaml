@@ -5,9 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" MaxHeight="750" MinHeight="750" Width="1080" MaxWidth="1080" MinWidth="1080
-        ">
+        Title="MainWindow" Height="800" Width="800"
+        >
     <Grid>
-        <Image Margin="100,30,100,74" Source="/chess board with nums.png" MaxWidth="600" MaxHeight="600" MinWidth="600" MinHeight="600" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="vypis" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" Text="" TextWrapping="Wrap" VerticalAlignment="Center" Height="624" Width="134"/>
+
+
+
     </Grid>
 </Window>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Chess
 {
-    public class figure
+    public class Figure
     {
         private List<string> numbers = new List<string>() {"1", "2", "3", "4", "5", "6", "7", "8"};
         private List<string> letters = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H" };
@@ -39,17 +39,23 @@ namespace Chess
         }
         public FigureColor Color { get; }
 
-        public figure(FigureType type, FigureColor color)
+        public Figure(FigureType type, FigureColor color)
         {
             Type = type;
             Color = color;
         }
 
-        public figure(FigureType type, string position, FigureColor color)
+        public Figure(FigureType type, string position, FigureColor color)
         {
             Type = type;
             Position = position;
             Color = color;
+        }
+
+        public override string ToString()
+        {
+            return Color.ToString() +" "+ Type.ToString() +" on "+ position; 
+
         }
     }
 
