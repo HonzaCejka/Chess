@@ -69,5 +69,10 @@ namespace Chess
                 vypis.Text += figure.ToString() + "\n";
             }
         }
+        public void DrawBoard(Canvas canvas)
+        {
+            Rectangle rectangle = new Rectangle();
+            rectangle.
+        }
     }
 }
