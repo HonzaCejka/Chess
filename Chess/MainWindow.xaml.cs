@@ -25,6 +25,8 @@ namespace Chess
 
         public MainWindow()
         {
+            
+
             InitializeComponent();
             figures.Add(new Figure(FigureType.Rook, "A8", FigureColor.black));
             figures.Add(new Figure(FigureType.Rook, "H8", FigureColor.black));
@@ -68,12 +70,53 @@ namespace Chess
             {
                 vypis.Text += figure.ToString() + "\n";
             }
+            DrawBoard();
         }
-        public void DrawBoard(Canvas canvas)
+        public void DrawBoard()
         {
-            Rectangle rectangle = new Rectangle();
-            rectangle.Width = canvas.Width / 8;
-            rectangle.Height = canvas.Height / 8;
+            for (int i = 0; i < 8; i++)
+            {
+                ChessBoardGrid.ColumnDefinitions.Add(
+                new ColumnDefinition()
+                {
+                    Width = new GridLength(1, GridUnitType.Star)
+                });
+
+                ChessBoardGrid.RowDefinitions.Add(
+                new RowDefinition()
+                {
+                    Height = new GridLength(3, GridUnitType.Star)
+                });
+            }
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    Rectangle rectangle = new Rectangle();
+                    rectangle.Stroke = new SolidColorBrush(Colors.Black);
+                    
+                    
+                    rectangle.VerticalAlignment = VerticalAlignment.Stretch;
+                    rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    if ((x+y) % 2 == 0)
+                    {
+                        rectangle.Fill = new SolidColorBrush(Color.FromRgb(65,43,21));
+                    }
+                    else
+                    {
+                        rectangle.Fill = new SolidColorBrush(Color.FromRgb(255,255,255));
+                    }
+                    
+                    Grid.SetColumn(rectangle, x);
+                    Grid.SetRow(rectangle, y);
+
+                    ChessBoardGrid.Children.Add(rectangle);
+                }
+                
+            }
+            
+            ChessBoardGrid.ShowGridLines = true;
+        }
         }
     }
-}
+
