@@ -81,7 +81,18 @@ namespace Chess
 
         private void DrawFigures(List<Figure> figures)
         {
+           
+               
+                        Rectangle rectangle = new Rectangle();
+                        rectangle.VerticalAlignment = VerticalAlignment.Stretch;
+                        rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
 
+                        rectangle.Fill = new ImageBrush();
+                       
+                        Grid.SetColumn(rectangle, 0);
+                        Grid.SetRow(rectangle, 5);
+
+                        ChessBoardGrid.Children.Add(rectangle);   
         }
 
         public void createDictionary()
