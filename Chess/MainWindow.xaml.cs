@@ -21,8 +21,8 @@ namespace Chess
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dictionary<int, string> columns = new Dictionary<int, string>();
-        Dictionary<int, string> rows = new Dictionary<int, string>();
+        Dictionary<string, int> columns = new Dictionary<string, int>();
+        Dictionary<string, int> rows = new Dictionary<string, int>();
         List<Figure> figures = new List<Figure>();
 
 
@@ -104,32 +104,33 @@ namespace Chess
             rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
             rectangle.Margin = new Thickness(5);
             rectangle.Fill = new ImageBrush(GetImage(figure.Resource));
-            
-            Grid.SetColumn(rectangle, 1);
-            Grid.SetRow(rectangle, 1);
+            int indexcol = columns[figure.Position.Substring(0, 1)];
+            int indexrow = rows[figure.Position.Substring(1,1)];
+            Grid.SetColumn(rectangle, indexcol);
+            Grid.SetRow(rectangle,indexrow);
 
             ChessBoardGrid.Children.Add(rectangle);   
         }
 
         public void createDictionary()
         {
-            columns.Add(0, "A");
-            columns.Add(1, "B");
-            columns.Add(2, "C");
-            columns.Add(3, "D");
-            columns.Add(4, "E");
-            columns.Add(5, "F");
-            columns.Add(6, "G");
-            columns.Add(7, "H");
+            columns.Add("A", 0);
+            columns.Add("B", 1);
+            columns.Add("C", 2);
+            columns.Add("D", 3);
+            columns.Add("E", 4);
+            columns.Add("F", 5);
+            columns.Add("G", 6);
+            columns.Add("H", 7);
 
-            rows.Add(0, "8");
-            rows.Add(1, "7");
-            rows.Add(2, "6");
-            rows.Add(3, "5");
-            rows.Add(4, "4");
-            rows.Add(5, "3");
-            rows.Add(6, "2");
-            rows.Add(7, "1");
+            rows.Add("8", 0);
+            rows.Add("7", 1);
+            rows.Add("6", 2);
+            rows.Add("5", 3);
+            rows.Add("4", 4);
+            rows.Add("3", 5);
+            rows.Add("2", 6);
+            rows.Add("1", 7);
 
         }
 
