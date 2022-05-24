@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,20 +80,32 @@ namespace Chess
 
         }
 
-        private void DrawFigures(List<Figure> figures)
+        private ImageSource GetImage(byte[] resource)
         {
-           
-               
-                        Rectangle rectangle = new Rectangle();
-                        rectangle.VerticalAlignment = VerticalAlignment.Stretch;
-                        rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
+            MemoryStream memoryStream = new MemoryStream(resource);
+            BitmapFrame bitmapFrame = BitmapFrame.Create(memoryStream);
+            Image image = new Image();
+            image.Source = bitmapFrame;
+            return image.Source;
+        }
 
-                        rectangle.Fill = new ImageBrush();
-                       
-                        Grid.SetColumn(rectangle, 0);
-                        Grid.SetRow(rectangle, 5);
+        private void DrawFigure()
+        {
+            
+        }
 
-                        ChessBoardGrid.Children.Add(rectangle);   
+        private void DrawFigures(List<Figure> figures)
+        { 
+            Rectangle rectangle = new Rectangle();
+            rectangle.VerticalAlignment = VerticalAlignment.Stretch;
+            rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
+            rectangle.Margin = new Thickness(5);
+            rectangle.Fill = new ImageBrush(GetImage(Properties.Resources.BlackQueen));
+            
+            Grid.SetColumn(rectangle, 1);
+            Grid.SetRow(rectangle, 1);
+
+            ChessBoardGrid.Children.Add(rectangle);   
         }
 
         public void createDictionary()

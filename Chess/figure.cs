@@ -38,6 +38,68 @@ namespace Chess
             get => position;     
         }
         public FigureColor Color { get; }
+        public byte[] Resource
+        {
+            get
+            {
+                if (Color == FigureColor.black)
+                {
+                    if (Type == FigureType.Queen)
+                    {
+                        return Properties.Resources.BlackQueen;
+                    }
+                    else if (Type == FigureType.King)
+                    {
+                        return Properties.Resources.BlackKing;
+                    }
+                    else if (Type == FigureType.Bishop)
+                    {
+                        return Properties.Resources.BlackBishop;
+                    }
+                    else if (Type == FigureType.Knight)
+                    {
+                        return Properties.Resources.BlackKnight;
+                    }
+                    else if (Type == FigureType.Rook)
+                    {
+                        return Properties.Resources.BlackRook;
+                    }
+                    else 
+                    {
+                        return Properties.Resources.BlackPawn;
+                    }
+
+                }
+                else
+                {
+                    if (Type == FigureType.Queen)
+                    {
+                        return Properties.Resources.white_queen;
+                    }
+                    else if (Type == FigureType.King)
+                    {
+                        return Properties.Resources.white_king;
+                    }
+                    else if (Type == FigureType.Bishop)
+                    {
+                        return Properties.Resources.white_bishop;
+                    }
+                    else if (Type == FigureType.Knight)
+                    {
+                        return Properties.Resources.white_knight;
+                    }
+                    else if (Type == FigureType.Rook)
+                    {
+                        return Properties.Resources.white_rook;
+                    }
+                    else
+                    {
+                        return Properties.Resources.white_pawn;
+                    }
+                }
+            }
+            
+        }
 
         public Figure(FigureType type, FigureColor color)
         {
