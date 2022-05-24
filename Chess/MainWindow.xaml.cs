@@ -89,18 +89,21 @@ namespace Chess
             return image.Source;
         }
 
-        private void DrawFigure()
+        private void DrawFigures(List<Figure> figures)
         {
-            
+            foreach (var figure in figures)
+            {
+                DrawFigure(figure);
+            }
         }
 
-        private void DrawFigures(List<Figure> figures)
+        private void DrawFigure(Figure figure)
         { 
             Rectangle rectangle = new Rectangle();
             rectangle.VerticalAlignment = VerticalAlignment.Stretch;
             rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
             rectangle.Margin = new Thickness(5);
-            rectangle.Fill = new ImageBrush(GetImage(Properties.Resources.BlackQueen));
+            rectangle.Fill = new ImageBrush(GetImage(figure.Resource));
             
             Grid.SetColumn(rectangle, 1);
             Grid.SetRow(rectangle, 1);
