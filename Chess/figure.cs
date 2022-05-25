@@ -11,6 +11,7 @@ namespace Chess
         private string position ="";
 
         public FigureType Type { get; }
+        public FigureColor Color { get; }
         public string Position
         {
             set
@@ -37,7 +38,6 @@ namespace Chess
             }
             get => position;     
         }
-        public FigureColor Color { get; }
         public byte[] Resource
         {
             get
