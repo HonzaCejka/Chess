@@ -24,26 +24,26 @@ namespace Chess
         Dictionary<string, int> columns = new Dictionary<string, int>();
         Dictionary<string, int> rows = new Dictionary<string, int>();
         List<Figure> figures = new List<Figure>();
-
+        Figure SelectedFigure;
 
         public MainWindow()
         {
-            
-
             InitializeComponent();
             FigureList();
             createDictionary();
+            TextVypis();
+            DrawBoard();
+            DrawFigures(figures);
+        }
 
+        private void TextVypis()
+        {
             vypis.Text = "";
             foreach (Figure figure in figures)
             {
                 vypis.Text += figure.ToString() + "\n";
             }
-            DrawBoard();
-            DrawFigures(figures);
-
         }
-
         private void FigureList()
         {
             figures.Add(new Figure(FigureType.Rook, "A8", FigureColor.black));
@@ -113,6 +113,34 @@ namespace Chess
             Grid.SetColumn(rectangle, indexcol);
             Grid.SetRow(rectangle,indexrow);
             ChessBoardGrid.Children.Add(rectangle);
+            rectangle.Tag = figure;
+            rectangle.MouseDown += Rectangle_MouseDown;
+        }
+
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle rectangle = (Rectangle)sender;
+            Figure figure = (Figure)rectangle.Tag;
+            
+            if (SelectedFigure == null)
+            {
+                SelectedFigure = figure;
+                rectangle.Stroke = new SolidColorBrush(Colors.Lime);
+                rectangle.StrokeThickness = 4;
+                rectangle.Margin = new Thickness(0);
+            }
+            else if (SelectedFigure == figure)
+            {
+                rectangle.StrokeThickness = 0;
+                rectangle.Margin = new Thickness(5);
+                SelectedFigure = null;
+            }
+            else
+            {
+                
+            }
+            //MessageBox.Show($"klik na {figure}");
+            
         }
 
         public void createDictionary()
