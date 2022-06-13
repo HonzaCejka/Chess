@@ -27,26 +27,10 @@ namespace Chess
 
 
         public MainWindow()
-        {            
+        {
+            
+
             InitializeComponent();
-            MakeFigures();
-            createDictionary();
-            FigureList();            
-            DrawBoard();
-            DrawFigures(figures);
-        }
-
-        public void FigureList()
-        {
-            vypis.Text = "";
-            foreach (Figure figure in figures)
-            {
-                vypis.Text += figure.ToString() + "\n";
-            }
-        }
-
-        public void MakeFigures()
-        {
             figures.Add(new Figure(FigureType.Rook, "A8", FigureColor.black));
             figures.Add(new Figure(FigureType.Rook, "H8", FigureColor.black));
             figures.Add(new Figure(FigureType.Knight, "B8", FigureColor.black));
@@ -55,8 +39,8 @@ namespace Chess
             figures.Add(new Figure(FigureType.Bishop, "F8", FigureColor.black));
             figures.Add(new Figure(FigureType.King, "E8", FigureColor.black));
             figures.Add(new Figure(FigureType.Queen, "D8", FigureColor.black));
-
-
+                            
+                            
             figures.Add(new Figure(FigureType.Pawn, "H7", FigureColor.black));
             figures.Add(new Figure(FigureType.Pawn, "B7", FigureColor.black));
             figures.Add(new Figure(FigureType.Pawn, "G7", FigureColor.black));
@@ -65,7 +49,7 @@ namespace Chess
             figures.Add(new Figure(FigureType.Pawn, "E7", FigureColor.black));
             figures.Add(new Figure(FigureType.Pawn, "A7", FigureColor.black));
             figures.Add(new Figure(FigureType.Pawn, "D7", FigureColor.black));
-
+                            
             figures.Add(new Figure(FigureType.Rook, "A1", FigureColor.white));
             figures.Add(new Figure(FigureType.Rook, "H1", FigureColor.white));
             figures.Add(new Figure(FigureType.Knight, "B1", FigureColor.white));
@@ -74,7 +58,7 @@ namespace Chess
             figures.Add(new Figure(FigureType.Bishop, "F1", FigureColor.white));
             figures.Add(new Figure(FigureType.King, "E1", FigureColor.white));
             figures.Add(new Figure(FigureType.Queen, "D1", FigureColor.white));
-
+                            
             figures.Add(new Figure(FigureType.Pawn, "H2", FigureColor.white));
             figures.Add(new Figure(FigureType.Pawn, "B2", FigureColor.white));
             figures.Add(new Figure(FigureType.Pawn, "G2", FigureColor.white));
@@ -83,6 +67,17 @@ namespace Chess
             figures.Add(new Figure(FigureType.Pawn, "E2", FigureColor.white));
             figures.Add(new Figure(FigureType.Pawn, "A2", FigureColor.white));
             figures.Add(new Figure(FigureType.Pawn, "D2", FigureColor.white));
+
+            createDictionary();
+
+            vypis.Text = "";
+            foreach (Figure figure in figures)
+            {
+                vypis.Text += figure.ToString() + "\n";
+            }
+            DrawBoard();
+            DrawFigures(figures);
+
         }
 
         private ImageSource GetImage(byte[] resource)
@@ -109,10 +104,8 @@ namespace Chess
             rectangle.HorizontalAlignment = HorizontalAlignment.Stretch;
             rectangle.Margin = new Thickness(5);
             rectangle.Fill = new ImageBrush(GetImage(figure.Resource));
-
             int indexcol = columns[figure.Position.Substring(0, 1)];
             int indexrow = rows[figure.Position.Substring(1,1)];
-
             Grid.SetColumn(rectangle, indexcol);
             Grid.SetRow(rectangle,indexrow);
 
@@ -187,6 +180,6 @@ namespace Chess
             
             
         }
-
+        }
     }
-}
+
